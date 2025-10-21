@@ -10,7 +10,7 @@ function App() {
     { text: "clean room", completed: false }
   ]);
   const [inputValue, setInputValue] = useState("");
-
+  console.log(tasks);
   // ===== Functions ======
   const handleAddTask = (e) => {
     e.preventDefault();
@@ -23,6 +23,19 @@ function App() {
   const handleDelete = (indexToDelete) => {
     setTasks(tasks.filter((_, index) => index !== indexToDelete));
   };
+  const handleToggle = (indexToToggle) => {
+    setTasks(
+      tasks.map((task, index) =>
+        index === indexToToggle
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+      
+    );
+    
+};
+window.handleToggle = handleToggle;
+
 
   // ==== JSX that gets returned =====
   return (
