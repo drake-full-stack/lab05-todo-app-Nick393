@@ -10,7 +10,7 @@ function App() {
     { text: "clean room", completed: false }
   ]);
   const [inputValue, setInputValue] = useState("");
-  console.log(tasks);
+  //console.log(tasks);
   // ===== Functions ======
   const handleAddTask = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ function App() {
     );
     
 };
-window.handleToggle = handleToggle;
+//window.handleToggle = handleToggle;
 
 
   // ==== JSX that gets returned =====
@@ -57,14 +57,16 @@ window.handleToggle = handleToggle;
       <ul className="task-list">
         {tasks.map((task, index) => (
           <li key={index} className="task-item">
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => handleToggle(index)}/>
             <span className="task-text">{task.text}</span>
-            <button
-              className="delete-button"
-              onClick={() => handleDelete(index)}
-            >
-              🗑️
-            </button>
+            <button className="delete-button" onClick={() => handleDelete(index)}>
+            🗑️
+          </button>
           </li>
+
         ))}
       </ul>
     </div>
